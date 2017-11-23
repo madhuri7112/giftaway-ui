@@ -1,0 +1,36 @@
+<html lang="en" ng-app="giftAwayApp">
+	<head>
+		
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
+		
+		<script src="js/AppRouter.js"></script>
+		<script src="js/apiservice.js"></script>
+		<script src="js/controllers/homepageController.js"></script>
+		<script src="js/controllers/loginController.js"></script>
+				
+
+ 
+	</head>
+
+	<body>
+
+			<div class="page-header">
+
+			</div>
+
+			<div class="page-content">
+	
+				<div ng-include="'templates/side-nav.html'" class="side-nav"></div>
+				
+				<div class="page-view" ng-view  ></div>
+
+			</div>
+			
+			
+
+		
+
+	</body>
+</html>

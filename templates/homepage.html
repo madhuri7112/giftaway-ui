@@ -1,0 +1,21 @@
+<html>
+     <body>
+     	<div>
+     		My Registries
+
+     		<div ng-repeat="(key, registry) in myRegistries">
+                    {{registry.name}}  {{ (registry.public) ? "Public" : "Private"}}
+     		</div>
+
+     	</div>
+        
+        <div> 
+            Other registries
+
+            <div ng-repeat="(key, registry) in otherRegistries">
+                    {{registry.owner_name}}  {{ (registry.name) }}
+     		</div>
+
+        </div>
+     </body>
+</html>
