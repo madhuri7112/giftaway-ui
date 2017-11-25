@@ -1,0 +1,33 @@
+#registries {
+	/*background-color: blue;*/
+	width: 100%;
+}
+
+#rtitle {
+	font-size: 25px;
+}
+
+.registry {
+	width: 100%;
+    background-color: whitesmoke;
+    border: 1 px black;
+    border: 1px solid lightgrey;
+    margin: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.rname {
+	display: inline-block
+}
+
+.rpublic {
+    display: inline-block; 
+    float: right;
+}
+
+#list-registry {
+	margin-top: 25px;
+}

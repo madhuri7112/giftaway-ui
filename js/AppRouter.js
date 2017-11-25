@@ -8,8 +8,19 @@ giftAwayApp .config(['$routeProvider',
         templateUrl: 'templates/homepage.html',
         controller: 'homepageController'
       })
-      .when('/login', {
+      .when('/login/', {
       	templateUrl: 'templates/login.html',
         controller: 'loginController'
+      })
+      .when('/myregistries', {
+        templateUrl: 'templates/myregistries.html',
+        controller: 'myregistriesController'
+      })
+      .when('/registryDetails/:registry_id/', {
+        templateUrl: 'templates/registryDetails.html',
+        controller: 'registryController'
+      })
+      .otherwise({
+        templateUrl: 'templates/notfound.html'
       })
   }]);

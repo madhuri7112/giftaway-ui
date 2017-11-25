@@ -14,24 +14,3 @@ giftAwayApp.controller('loginController', ['$scope', '$http', '$location','apise
 }]);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// giftAwayApp.controller('loginController',function($scope, $http, 'apiService') {
-      
-    
-    
-// });
-
-

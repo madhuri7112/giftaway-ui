@@ -75,10 +75,9 @@ giftAwayApp.service('apiservice',['$http', function($http){
     this.fetchRegistries = function() {
         
         userId = localStorage.getItem(self.userIdKey)
-
         //TODO - remove this hack
         //params = {"user_id": userId}
-        params = {"user_id": 2}
+        params = {"user_id":11}
 
         return makeRequest(self.getMethod, params, self.registriesApi).then(function(responseData) {
              return responseData;

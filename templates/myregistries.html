@@ -1,0 +1,39 @@
+
+<div id = registries>
+            <div>
+               <div id="rtitle"> 
+                   <span>  My Registries </span>
+                   <button class="waves-effect waves-light btn" style="float:right" > New Registry </button>
+
+               </div> 
+               <div class="divider"></div>
+                
+                <div id="list-registry">
+
+                    <div class="registry" ng-repeat="(key, registry) in myRegistries" ng-click=>
+                        
+                        <div class="rname">
+                            {{registry.details.name}}  
+                            <span class="new badge" data-badge-caption="items">{{registry.details.num_items}}</span>
+                        </div>
+                        <div class="rpublic">
+                        <span style="float:right"> {{ (registry.details.public) ? "Public" : "Private"}} </span>
+                        </div>
+                          
+                    </div>
+
+                </div>
+
+            </div>
+        
+           
+            <!-- <div> 
+                Other registries
+
+                <div ng-repeat="(key, registry) in otherRegistries">
+                        {{registry.owner_name}}  {{ (registry.name) }}
+                </div>
+
+            </div> -->
+
+</div>
