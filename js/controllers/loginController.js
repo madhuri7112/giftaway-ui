@@ -9,8 +9,6 @@ giftAwayApp.controller('loginController', ['$scope', '$http', '$location','apise
     $scope.hidenavs = true;
 console.log($location.path());
     $scope.login = function() {
-
-    alert(100);
        apiService.getToken($scope.username, $scope.password);
     }
     	   

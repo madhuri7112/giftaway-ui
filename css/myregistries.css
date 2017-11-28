@@ -19,6 +19,10 @@
     border-radius: 5px;
 }
 
+#registries table {
+    width: 60%;
+}
+
 .rname {
 	display: inline-block
 }

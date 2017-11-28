@@ -6,39 +6,36 @@
 <div id = registries>
             <div>
                <div id="rtitle"> 
-                   <span>  My Registries fdvdfgfsdbddczv sf</span>
+                   <span>  My Registries </span>
                    <button class="waves-effect waves-light btn" style="float:right" > New  </button>
 
                </div> 
-               <div class="divider"></div>
-                
-                <div id="list-registry">
 
-                    <div class="registry" ng-repeat="(key, registry) in myRegistries" ng-click=>
+                <table class="bordered">
+                    <thead>
+                        <tr>
+                        <th> Name </th>
+                        <th> Num of items </th>
+                        <th> Access </th>
+                        <th> View/Edit </th>
+                        </tr>
+                    </thead>
+                    <tr  ng-repeat="(key, registry) in myRegistries" >
                         
-                        <div class="rname">
-                            {{registry.details.name}}  
-                            <span class="new badge" data-badge-caption="items">{{registry.details.num_items}}</span>
-                        </div>
-                        <div class="rpublic">
-                        <span style="float:right"> {{ (registry.details.public) ? "Public" : "Private"}} </span>
-                        </div>
+                        <td> {{registry.details.name}}  </td>
+                        <td>  
+                           {{registry.details.num_items}}
+                        </td>
+                        <td>
+                        <span> {{ (registry.details.public) ? "Public" : "Private"}} </span>
+                        </td> 
+                        <td> <a href = "#registryDetails/{{registry.details.id}}"> View </a></td>
                           
-                    </div>
+                    </tr>
 
                 </div>
 
             </div>
-        
-           
-            <!-- <div> 
-                Other registries
-
-                <div ng-repeat="(key, registry) in otherRegistries">
-                        {{registry.owner_name}}  {{ (registry.name) }}
-                </div>
-
-            </div> -->
 
 </div>
 </div>
