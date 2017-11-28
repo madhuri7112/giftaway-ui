@@ -8,7 +8,7 @@ giftAwayApp .config(['$routeProvider',
         templateUrl: 'templates/homepage.html',
         controller: 'homepageController'
       })
-      .when('/login/', {
+      .when('/login', {
       	templateUrl: 'templates/login.html',
         controller: 'loginController'
       })

@@ -1,6 +1,11 @@
 #left-menu {
 	/*margin-top: 30px;*/
     /*margin-left: 40px;*/
+   /* background-color: black;*/
+}
+
+#left-menu a {
+	color: white;
 }
 
 #left-menu-item {
