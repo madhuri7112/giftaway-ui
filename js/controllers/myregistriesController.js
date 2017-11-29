@@ -8,6 +8,10 @@ giftAwayApp.controller('myregistriesController', ['$scope', '$http', '$location'
         $scope.myRegistries = registries['self_registries'];
         $scope.otherRegistries = registries['other'];
     });
+
+    $scope.logout = function() {
+        apiService.logout();
+    }
          
 }]);
 
