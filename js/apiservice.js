@@ -22,28 +22,53 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
 
     self = this;
 
-    var makeRequest = function(method, params, url, self) {
+    var makeRequest = function(method, params, url) {
 
-        if (localStorage.getItem(this.tokenKey) == null) {
+        if (localStorage.getItem(self.tokenKey) == null) {
             token = ""
+            
+            console.log(url);
         } else {
-            token = localStorage.getItem(tokenKey);
+            token = localStorage.getItem(self.tokenKey);
+            
+            console.log(url);
+            console.log(token);
         }
+
+        headers = {
+               'Content-Type': 'application/json'
+        }
+        console.log("Here");
+        if (token == "") {
+            console.log(url)
+            console.log(self.loginApi)
+            if (url == self.loginApi) {
+                console.log("not redir");
+            } else {
+                console.log("redirecting");
+                $location.url('/login');
+            }
+        } else {
+            console.log("setting");
+            headers['Authorization'] = token
+        }
+        // if (token == "" && url != this.loginApi){
+        //     $location.url('/login');
+        // } else {
+        //     headers['Authorization'] = "aa20f8404d57fe9329f290a8e4cdc4ba06aca505"
+        // }
         responseData = null;
         return $http({
         
             method: method,
             //url: 'http://127.0.0.1:8000/giftAway/createtoken',
             url: serverUrl+'/'+url,
-            headers: {
-               'Content-Type': 'application/json',
-               'Authorization': token
-            },
+            headers: headers,
             data: params,
             params: params
         }).then(function successCallback(response) {
             responseData = response.data;
-            console.log(responseData);
+            //console.log(responseData);
             
             return responseData;
         }, function errorCallback(response) {
@@ -62,10 +87,10 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
         responseData = makeRequest(self.postMethod, params, self.loginApi)
         .then(function(responseData) {
 
-             if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+             if (responseData != null && ("status" in responseData) && responseData['status'] == STATUS_FAILED) {
                    alert("Incorrect username and password.Please try again");
              } else {
-                   console.log(responseData);
+                   //console.log(responseData);
                    token = responseData['token'];
                    userId = responseData['user_id'];
                    localStorage.setItem(self.tokenKey, token);
