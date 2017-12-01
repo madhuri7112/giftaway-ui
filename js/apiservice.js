@@ -12,6 +12,8 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
     this.userfromtokenApi = "userfromtoken"
     this.registryDetailsApi = "getregistry"
     this.registerApi = "newuser"
+    this.userdetailsApi = "userdetails"
+    this.changepasswordApi = "changepassword"
 
     serverUrl = "http://127.0.0.1:3000/giftRegistry";
     STATUS_SUCCESS = "SUCCESS"
@@ -38,18 +40,13 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
         headers = {
                'Content-Type': 'application/json'
         }
-        console.log("Here");
+
         if (token == "") {
-            console.log(url)
-            console.log(self.loginApi)
             if (url == self.loginApi) {
-                console.log("not redir");
-            } else {
-                console.log("redirecting");
+            } else {              
                 $location.url('/login');
             }
         } else {
-            console.log("setting");
             headers['Authorization'] = token
         }
         // if (token == "" && url != this.loginApi){
@@ -164,6 +161,25 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
              }
         });  
 
+    }
+
+    this.fetchUserDetails = function() {
+        params = {}
+        return makeRequest(self.getMethod, params, self.userdetailsApi).then(function(responseData) {
+             return responseData;
+        });  
+    }
+
+    this.changepassword = function(password) {
+        params = {"password" : password}
+
+        return makeRequest(self.postMethod, params, self.changepasswordApi).then(function(responseData) {
+             if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+                   alert($responseData['message']);
+             } else {
+                   alert("password succesfully changed");
+             }
+        });  
     }
 
 }]);
