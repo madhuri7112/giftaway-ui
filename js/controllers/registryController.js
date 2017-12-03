@@ -12,7 +12,7 @@ giftAwayApp.controller('registryController', ['$scope', '$http', '$location','$r
     	$scope.registry = registryDetails;
         console.log(registryDetails);
     });
-         
+
     $scope.logout = function() {
         apiService.logout();
     }

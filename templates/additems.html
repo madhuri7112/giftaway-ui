@@ -1,0 +1,68 @@
+<div  ng-include="'templates/top-nav.html'"></div>
+<div  class="left-nav" ng-include="'templates/side-nav.html'"></div>
+
+<div class="page-view" >
+
+<div> Items </div>
+        <table class="item-table" class="bordered">
+        	<thead>
+                <tr>
+                <th> Id  </th>
+                <th> Category <a href ng-click="sortByColumn('category')"> ^ </a> </th>
+                <th> Item  <a href ng-click="sortByColumn('item_name')"> ^ </a> </th>
+                <th> colour <a href ng-click="sortByColumn('colour')"> ^ </a> </th>
+                <th> Price <a href ng-click="sortByColumn('price')"> ^ </a> </th>
+                <th> Add </th>
+                </tr>
+            </thead>
+
+            <tr>
+                <td></td>
+                <td> 
+                      <select ng-model = "searchText.category">
+                      	<option></option>
+                      	<option value = "Electronics"> Electronics </option>
+                      	<option value = "Watches"> Watches </option>
+                      	<option value = "Mobile"> Mobile </option>
+
+                      </select>
+ 
+                </td>
+                <td>
+                	<input ng-model = "searchText.item_name" type="text" name="">
+                </td>
+                
+                <td>
+                	<select ng-model = "searchText.colour">
+                		<option></option>
+                      	<option> Peach </option>
+                      	<option> Black </option>
+                      	<option> White </option>
+
+                      </select>
+
+                </td>
+                <td>
+                    <select>
+                    	<option></option>
+                      	<option> <500 </option>
+                      	<option> 500-1000 </option>
+                      	<option> 1000-5000 </option>
+                        <option> >5000 </option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+
+            <tr ng-repeat="(key, item) in items | orderBy:orderColumn | filter:searchText" >                        
+                <td> {{item.id}}  </td>
+                <td> {{item.category}} </td>
+                <td> {{item.item_name}} </td>          
+                <td> {{item.colour}}   </td>
+                <td> {{item.price}}   </td>
+                <td> <a href ng-click="addItem(item.id)"> Add </a></td>
+            </tr>
+        </table>
+      
+
+</div>

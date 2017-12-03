@@ -13,10 +13,35 @@
     <div class="rpublic">
     <span style="float:right"> {{ (registry.public) ? "Public" : "Private"}} </span>
     </div> 
+    <div class="rpublic">
+    <span style="float:right"> <a href = "#addItems/{{registry.id}}"> Add items </a> </span>
+    </div> 
+
+    <table class="bordered">
+          <thead>
+                <tr>
+                <th> Id </th>
+                <th> Category </th>
+                <th> Item </th>
+                <th> colour </th>
+                <th> Price </th>
+                <th> Remove </th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="(key, item) in registry.items" >                        
+                <td> {{item.id}}  </td>
+                <td> {{item.category}} </td>
+                <td> {{item.item_name}} </td>          
+                <td> {{item.colour}} </td>
+                <td> {{item.price}} </td>
+                <td> <a href ng-click="removeItem(item.id)"> Remove </a></td>
+            </tr>
+    </table>
 
 </div>
 
-<div id="item-details">
+<!-- <div id="item-details">
 
 	<div id="all-items">
 
@@ -26,5 +51,5 @@
 
    </div>
 
-</div>
+</div> -->
 </div>

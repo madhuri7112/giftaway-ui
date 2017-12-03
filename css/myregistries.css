@@ -1,7 +1,12 @@
 #registries {
 	/*background-color: blue;*/
-	width: 100%;
+	width: 60%;
+    vertical-align: top;
 }
+
+/*input[type=checkbox] {
+    opacity: inherit;
+}*/
 
 #rtitle {
 	font-size: 25px;
@@ -20,7 +25,24 @@
 }
 
 #registries table {
-    width: 60%;
+    width: 100%;
+}
+
+#registries {
+    display: inline-block;
+}
+
+#new-registry {
+    display: inline-block;
+    margin: 100px;
+    border: 1px solid black;
+    padding: 30px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+#new-registry input {
+    width: 100px;
 }
 
 .rname {

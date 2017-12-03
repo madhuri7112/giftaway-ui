@@ -14,6 +14,12 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
     this.registerApi = "newuser"
     this.userdetailsApi = "userdetails"
     this.changepasswordApi = "changepassword"
+    this.assignItemApi = "assignitem"
+    this.unassignItemApi = "unassignitem"
+    this.newRegistryApi  = "createregistry"
+    this.addItemToRegistryApi = "additemtoregistry"
+    this.fetchItemsApi = "items"
+    this.fetchUsersApi = "getusers"
 
     serverUrl = "http://127.0.0.1:3000/giftRegistry";
     STATUS_SUCCESS = "SUCCESS"
@@ -180,6 +186,75 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
                    alert("password succesfully changed");
              }
         });  
+    }
+
+    this.assignItem = function(registry_item_id) {
+        
+        params = {"registry_item_id": registry_item_id}
+        return makeRequest(self.postMethod, params, self.assignItemApi).then(function(responseData) {
+             if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+                   alert($responseData['message']);
+             } else {
+                   alert("Item assigned to you successfully");
+             }
+        }); 
+    }
+
+    this.unassignItem = function(registry_item_id) {
+        userId = localStorage.getItem(self.userIdKey)
+
+        params = {"user_id": userId, "registry_item_id": registry_item_id}
+        return makeRequest(self.postMethod, params, self.unassignItemApi).then(function(responseData) {
+             if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+                   alert($responseData['message']);
+             } else {
+                   alert("Item unassigned successfully");
+             }
+        }); 
+    }
+
+    this.addNewRegistry = function(registryDetails) {
+        params = {"name": registryDetails.name, 
+        "public": registryDetails.public,
+        "allowed_users": registryDetails.allowed_users
+        }
+
+        return makeRequest(self.postMethod, params, self.newRegistryApi).then(function(responseData) {
+             if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+                   alert($responseData['message']);
+             } else {
+                   alert("New registry added.");
+             }
+        }); 
+
+    }
+
+    this.addItemToRegistry = function(registryId, itemId) {
+        params = {"registry_id": registryId, "item_id": itemId}
+
+        return makeRequest(self.postMethod, params, self.addItemToRegistryApi).then(function(responseData) {
+             if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+                   alert($responseData['message']);
+             } else {
+                   alert("Item added to registry");
+             }
+        }); 
+    }
+
+    this.fetchItems = function() {
+        
+        params = {}
+        return makeRequest(self.getMethod, params, self.fetchItemsApi).then(function(responseData) {
+            return responseData
+        }); 
+
+    }
+
+    this.fetchUsers = function() {
+        params = {}
+        return makeRequest(self.getMethod, params, self.fetchUsersApi).then(function(responseData) {
+            return responseData;
+        }); 
     }
 
 }]);
