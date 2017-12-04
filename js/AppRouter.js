@@ -1,5 +1,10 @@
 var giftAwayApp = angular.module('giftAwayApp', ['ngRoute']);
 
+giftAwayApp.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
 
 giftAwayApp .config(['$routeProvider',
   function($routeProvider) {

@@ -25,7 +25,7 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
     this.removeItemInventoryApi = "removeitemfrominventory"
     this.removeItemFromRegistryApi = "removeitemfromregistry"
 
-    serverUrl = "http://127.0.0.1:8000/giftRegistry";
+    serverUrl = "https://127.0.0.1:8000/giftRegistry";
     STATUS_SUCCESS = "SUCCESS"
     STATUS_FAILED = "FAIL"
 

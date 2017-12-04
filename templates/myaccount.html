@@ -2,18 +2,38 @@
         <div  class="left-nav" ng-include="'templates/side-nav.html'"></div>
 
 <div class="page-view" >
-<div>
-   <div> My Account Details </div>
-   <div> Username: {{username}} </div>
-   <div> Email: {{email}} </div>
+    <div>
+       <div id="acnt-header"> My Account Details </div>
+       <div id="acnt-details">
 
-   <a href ng-click="passwordChange = true"> Change password </a> 
+       	    <form class="col s6">
+                <div class="input-field col s3">
+                   <input disabled id="last_name" type="text" class="validate" value="{{username}}">
+                   <label class="active" for="last_name">Username</label>
+                </div>
+                <div class="input-field col s3">
+                   <input disabled id="last_name" type="text" class="validate" value="{{email}}">
+                   <label class="active" for="last_name">Email</label>
+                </div>
+       	    </form>
+            <!-- <div> Username: {{username}} </div>
+            <div> Email: {{email}} </div> -->
+            <a href ng-click="passwordChange = true"> Change password </a> 	
+       </div>     
+    </div>
+    
+    <div id="password-change" ng-show="passwordChange">
+      New Password:  
+      <!-- <input type="password" ng-model="password" name="">  -->
 
-</div>
-
-<div id="password-change" ng-show="passwordChange">
-  New Password:  
-  <input type="password" ng-model="password" name=""> 
-  <button ng-click=updatePassword()> Update </button>
-</div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label ng-model="password" for="password">Password</label>
+        </div>
+      </div>
+      
+      <a class="waves-effect waves-light btn" ng-click=updatePassword()>Update</a>
+      
+    </div>
 </div>
