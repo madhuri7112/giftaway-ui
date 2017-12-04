@@ -4,8 +4,8 @@ giftAwayApp.controller('loginController', ['$scope', '$http', '$location','apise
         $location,
         apiService) {
     
-    $scope.username = "madhuri2";
-    $scope.password = "123456";
+    $scope.username = "";
+    $scope.password = "";
     $scope.hidenavs = true;
 
     $scope.regUsername = "";
@@ -28,6 +28,11 @@ giftAwayApp.controller('loginController', ['$scope', '$http', '$location','apise
         });
 
     }
+
+    $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+       $('.modal').modal();
+    });
     	   
 }]);
 

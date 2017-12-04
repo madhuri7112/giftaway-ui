@@ -7,13 +7,25 @@
 </p>
  -->
 
-<div id="login-nav">
+<!-- <div id="login-nav">
     <div id="logo"> GiftAway </div>   
 
-</div>
+</div> -->
 
 
-<div id = "login"> 
+
+<!-- <div id = "signup">
+    <div>Register</div>
+    Username <input  ng-model = "regUsername" type="text" name=""></input>
+    Emailid <input   ng-model = "regEmail" type="text" name=""></input>  
+    Password <input  ng-model = "regPassword" type="text" name=""></input>
+
+    <button ng-click = registerUser() > Signup </button>
+</div> -->
+
+
+<!-- <div id = "login"> 
+
 	<div>Sign In</div>
     Username <input  ng-model = "username" type="text" name=""></input>
     Password <input  ng-model = "password" type="text" name=""></input>
@@ -26,13 +38,113 @@
         <button ng-click = forgotpassword() > Reset Password </button>
     </div>
 
-</div>
+</div> -->
 
-<div id = "signup">
-	<div>Register</div>
-    Username <input  ng-model = "regUsername" type="text" name=""></input>
-    Emailid <input   ng-model = "regEmail" type="text" name=""></input>  
-    Password <input  ng-model = "regPassword" type="text" name=""></input>
 
-    <button ng-click = registerUser() > Signup </button>
-</div>
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+      <form class="login-form">
+        <div style = "margin-left: -20px" class="row">
+          <div class="input-field col s12 center">
+            <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+            <p  class="center login-form-text">Gift Away Login!</p>
+          </div>
+        </div>
+        <div style = "margin-left: -20px;margin-right: 30px;" class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input ng-model = "username" id="username" type="text">
+            <label for="username" class="center-align">Username</label>
+          </div>
+        </div>
+        <div style = "margin-left: -20px;margin-right: 30px;" class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input ng-model = "password"id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <a href ng-click = login() class="btn waves-effect waves-light col s12">Login</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a class="modal-trigger" href="#modal2">Register Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a class="modal-trigger" href="#modal3">Forgot Password!</a></p>
+          </div>          
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+   <div>
+            
+        <div id="modal2" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Register</h4>
+              
+              
+                <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input ng-model = "regUsername"  id="first_name" type="text" class="validate">
+                        <label for="item_code">Usernamee</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input ng-model = "regPassword" id="item_name" type="text" class="validate">
+                        <label for="item_name">Password</label>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input ng-model = "regEmail"  type="text" class="validate">
+                        <label for="password">Email</label>
+                      </div>
+                    </div>
+              
+                
+                  </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <a href ng-click="registerUser()" class="modal-action modal-close waves-effect waves-green btn-flat">Register</a>
+              <a href class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div>
+            
+        <div id="modal3" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Forgot Password</h4>
+              <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input ng-model = "forgotEmail"  type="text" class="validate">
+                        <label for="password">Email</label>
+                      </div>
+                    </div>
+              
+                
+                  </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <a href ng-click = forgotpassword() class="modal-action modal-close waves-effect waves-green btn-flat">Reset</a>
+              <a href class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
+    </div>
