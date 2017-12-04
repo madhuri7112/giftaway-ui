@@ -23,8 +23,9 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
     this.forgotpasswordApi = "forgotpassword"
     this.addItemInventoryApi = "additemtoinventory"
     this.removeItemInventoryApi = "removeitemfrominventory"
+    this.removeItemFromRegistryApi = "removeitemfromregistry"
 
-    serverUrl = "http://127.0.0.1:3000/giftRegistry";
+    serverUrl = "http://127.0.0.1:8000/giftRegistry";
     STATUS_SUCCESS = "SUCCESS"
     STATUS_FAILED = "FAIL"
 
@@ -248,6 +249,19 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
                    alert($responseData['message']);
              } else {
                    alert("Item added to registry");
+             }
+        }); 
+    }
+
+    this.removeItemFromRegistry = function(registryId, itemId) {
+
+        params = {"registry_id": registryId, "item_id": itemId}
+
+        return makeRequest(self.postMethod, params, self.removeItemFromRegistryApi).then(function(responseData) {
+             if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+                   alert($responseData['message']);
+             } else {
+                   alert("Item removed from registry");
              }
         }); 
     }

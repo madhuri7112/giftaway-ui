@@ -1,4 +1,5 @@
-giftAwayApp.controller('additemController', ['$scope', '$http', '$location','apiservice','$routeParams',
+giftAwayApp
+.controller('additemController', ['$scope', '$http', '$location','apiservice','$routeParams',
     function($scope, 
         $http,
         $location,
@@ -29,7 +30,25 @@ giftAwayApp.controller('additemController', ['$scope', '$http', '$location','api
     $scope.removeItem = function(registry_id, item_id) {
         apiService.removeItemFromRegistry(registry_id, item_id)
     }
-}]);
+    $scope.greaterThan = 0;
+
+
+}])
+
+.filter('price', function() {
+  return function (products, minPrice) {
+    var filteredItems = [];
+    
+    angular.forEach(products , function (product) {
+      if (product.price >= minPrice) {
+        filteredItems.push(product);
+        console.log(product);
+      }
+    });
+    return filteredItems;
+    }
+    });
+
 
 
 

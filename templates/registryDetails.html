@@ -25,6 +25,7 @@
                 <th> Item </th>
                 <th> colour </th>
                 <th> Price </th>
+                <th> Remove </th>
                 
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                 <td> {{item.item_name}} </td>          
                 <td> {{item.colour}} </td>
                 <td> {{item.price}} </td>
+                <td> <a href ng-click="removeItem(item.id)">Remove</a> </td>
                 
             </tr>
     </table>

@@ -16,6 +16,12 @@ giftAwayApp.controller('registryController', ['$scope', '$http', '$location','$r
     $scope.logout = function() {
         apiService.logout();
     }
+
+    $scope.removeItem = function(item_id) {
+        apiService.removeItemFromRegistry(registry_id, item_id) ;
+
+        
+    }
 }]);
 
 
