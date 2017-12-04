@@ -11,6 +11,8 @@ giftAwayApp.controller('loginController', ['$scope', '$http', '$location','apise
     $scope.regUsername = "";
     $scope.regPassword = ""
     $scope.regEmail = "";
+    $scope.showemailbox = false;
+    $scope.forgot_email = "";
 
     $scope.login = function() {
        apiService.getToken($scope.username, $scope.password);
@@ -18,6 +20,13 @@ giftAwayApp.controller('loginController', ['$scope', '$http', '$location','apise
 
     $scope.registerUser = function() {
         apiService.register($scope.regUsername, $scope.regPassword, $scope.regEmail);
+    }
+
+    $scope.forgotpassword = function() {
+        apiService.forgotPassword($scope.forgotEmail).then(function(result) {
+            $scope.showemailbox = false;
+        });
+
     }
     	   
 }]);

@@ -20,6 +20,7 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
     this.addItemToRegistryApi = "additemtoregistry"
     this.fetchItemsApi = "items"
     this.fetchUsersApi = "getusers"
+    this.forgotpasswordApi = "forgotpassword"
 
     serverUrl = "http://127.0.0.1:3000/giftRegistry";
     STATUS_SUCCESS = "SUCCESS"
@@ -253,6 +254,18 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
     this.fetchUsers = function() {
         params = {}
         return makeRequest(self.getMethod, params, self.fetchUsersApi).then(function(responseData) {
+            return responseData;
+        }); 
+    }
+
+    this.forgotPassword = function(email) {
+        params = {"email": email}
+        return makeRequest(self.postMethod, params, self.forgotpasswordApi).then(function(responseData) {
+            if (("status" in responseData) && responseData['status'] == STATUS_FAILED) {
+                   alert($responseData['message']);
+             } else {
+                   alert("New password is sent to your email id.");
+             }
             return responseData;
         }); 
     }

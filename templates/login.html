@@ -19,6 +19,12 @@
     Password <input  ng-model = "password" type="text" name=""></input>
 
     <button ng-click = login() > Login </button>
+    <button ng-click = "showemailbox=true"> Forgot password </button>
+
+    <div ng-show="showemailbox">
+        Email <input ng-model = "forgotEmail" type="text" name=""></input>
+        <button ng-click = forgotpassword() > Reset Password </button>
+    </div>
 
 </div>
 
