@@ -1,0 +1,98 @@
+<div  ng-include="'templates/top-nav.html'"></div>
+<!-- <div  class="left-nav" ng-include="'templates/side-nav.html'"></div> -->
+
+
+
+<div class="page-view" >
+
+	    <div class = "inventory-list">
+            ITEMS IN INVENTORY. <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add Item</a>
+       
+            <table class="bordered">
+                <thead>
+                    <tr>
+                    <th> Item code </th>
+                    <th> Item name </th>
+                    <th> Price </th>
+                    <th> Category </th>
+                    <th> Colour </th>
+                    <th> Remove </th>
+                    </tr>
+                </thead>
+                <tr  ng-repeat="(key, item) in items" >
+                    
+                    <td> {{item.item_code}}  </td>
+                    <td> {{item.item_name}} </td>
+                    <td> {{item.price}} </td>
+                    <td> {{item.category}} </td>
+                    <td> {{item.colour}} </td>
+                    <td> <a href ng-click = "removeItem(item.id)"> Remove </a> </td>
+                      
+                </tr>
+            </table> 
+        </div>
+
+        <div>
+        	
+        	<div id="modal1" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Add Item</h4>
+                  
+                  
+                    <div class="row">
+                      <form class="col s12">
+                        <div class="row">
+                          <div class="input-field col s6">
+                            <input ng-model = "newItem.item_code"  id="first_name" type="text" class="validate">
+                            <label for="item_code">Item Code</label>
+                          </div>
+                          <div class="input-field col s6">
+                            <input ng-model = "newItem.item_name" id="item_name" type="text" class="validate">
+                            <label for="item_name">Item Name</label>
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input ng-model = "newItem.price" id="password" type="number" class="validate">
+                            <label for="password">price</label>
+                          </div>
+                        </div>
+                  
+                        <div class="input-field col s12">
+                          <select ng-model = "newItem.colour">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">Black</option>
+                            <option value="2">White</option>
+                            <option value="3">Red</option>
+                            <option value="3">Green</option>
+                          </select>
+                          <label>Colour</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                          <select ng-model = "newItem.category">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">Watches</option>
+                            <option value="2">Apparel</option>
+                            <option value="3">Laptops</option>
+                            <option value="3">Perfumes</option>
+                            <option value="3">Bags</option>
+                          </select>
+                          <label>Category</label>
+                        </div>
+                      
+
+                      </form>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                  <a href ng-click="addItem()" class="modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+                  <a href class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+            </div>
+
+        </div>
+</div>

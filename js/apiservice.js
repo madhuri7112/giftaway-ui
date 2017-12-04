@@ -21,13 +21,17 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
     this.fetchItemsApi = "items"
     this.fetchUsersApi = "getusers"
     this.forgotpasswordApi = "forgotpassword"
+    this.addItemInventoryApi = "additemtoinventory"
+    this.removeItemInventoryApi = "removeitemfrominventory"
 
     serverUrl = "http://127.0.0.1:3000/giftRegistry";
     STATUS_SUCCESS = "SUCCESS"
     STATUS_FAILED = "FAIL"
 
     LOGIN_URL = "/login"
+    ADMIN_URL = "/admin"
     MY_REGISTRIES_URL = "/myregistries"
+    ADMIN_ID = 18
 
     self = this;
 
@@ -99,7 +103,13 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
                    userId = responseData['user_id'];
                    localStorage.setItem(self.tokenKey, token);
                    localStorage.setItem(self.userIdKey, userId);
-                   $location.url(MY_REGISTRIES_URL);
+
+                   if (userId == ADMIN_ID) {
+                       $location.url(ADMIN_URL);
+                   } else {
+                       $location.url(MY_REGISTRIES_URL);
+                   }
+                   
              }
              
         });          
@@ -267,6 +277,20 @@ giftAwayApp.service('apiservice',['$http', '$location', function($http, $locatio
                    alert("New password is sent to your email id.");
              }
             return responseData;
+        }); 
+    }
+
+    this.addItemToInventory = function(params) {
+        
+        return makeRequest(self.postMethod, params, self.addItemInventoryApi).then(function(responseData) {
+            return responseData
+        }); 
+    }
+
+    this.removeItemFromInventory = function(params) {
+
+        return makeRequest(self.postMethod, params, self.removeItemInventoryApi).then(function(responseData) {
+            return responseData
         }); 
     }
 

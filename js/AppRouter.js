@@ -32,6 +32,10 @@ giftAwayApp .config(['$routeProvider',
         templateUrl: 'templates/additems.html',
         controller: 'additemController'
       })
+      .when('/admin', {
+        templateUrl: 'templates/admin.html',
+        controller: 'adminController'
+      })
       .otherwise({
         templateUrl: 'templates/notfound.html'
       })
