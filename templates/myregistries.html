@@ -1,5 +1,6 @@
 <div  ng-include="'templates/top-nav.html'"></div>
 <div  class="left-nav" ng-include="'templates/side-nav.html'"></div>
+<!-- <div  class="left-nav" ng-include="'templates/newregistry.html'"></div> -->
 
 
 <div class="page-view" >
@@ -32,45 +33,63 @@
                     </tr>
                 </table>            
         </div>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal3">New</a>
+        
 
-        <div id = "new-registry">
 
-               <div>Name: <input ng-model = "newregistry.name" type="text"> </input></div>
+        <div id="modal3" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                  <div class="row">
+                        <form class="col s12">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input ng-model = "newregistry.name" placeholder="Placeholder" id="first_name" type="text" class="validate">
+                              <label class="active" for="first_name">Name</label>
+                            </div>     
+                          </div>
 
-               <div> Public
+                          <div> Public
                
-               <input ng-model = "newregistry.public" value = "True" name="public" type="radio" id="public-yes" />
-               <label for="public-yes">Yes</label>
+                            <input ng-model = "newregistry.public" value = "True" name="public" type="radio" id="public-yes" />
+                            <label for="public-yes">Yes</label>
+            
+                            <input ng-model = "newregistry.public" name="public" value = "False" type="radio" id="public-no" />
+                            <label for="public-no">No</label>
+                          </div>
+                          
 
-               <input ng-model = "newregistry.public" name="public" value = "False" type="radio" id="public-no" />
-               <label for="public-no">No</label>
-               </div>
+                          <div ng-show="newregistry.public == 'False'">
+                              <p> Give access to: </p>
+                              <div id="user-list">
+                                 
+        
+                                  <div class="user" ng-repeat="(key, user) in users">
+                                    
+                                        <label> 
+                                         {{user.username}}           
+                                         <input ng-model = "user.isSelected" style="opacity: inherit;pointer-events: all;" type="checkbox">
+        
+                                       </label>     
+        
+                                  </div>
+                              </div>
 
-               <div ng-show="newregistry.public == 'False'">
-                     <div id="user-list">
-                        Give access to:
+                  
+                          </div>
+                          
+                        </form>
+                  </div>
+            </div>
+            <div class="modal-footer">
+              <a href ng-click="addNewRegistry()" class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
+              <a href class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
 
-                        <div class="user" ng-repeat="(key, user) in users">
-                           
-                               <label> 
-                                {{user.username}}           
-                                <input ng-model = "user.isSelected" style="opacity: inherit;pointer-events: all;" type="checkbox">
+        
+        
+          
 
-                              </label>     
-
-                        </div>
-                     </div>
-
-                    <!--  <select>
-                        User
-                        <option ng-repeat="(key, user) in users">{{user.username}}</option>
-                     </select> -->
-                     <!-- <ul id='dropdown1' class='dropdown-content'>
-                          <li ng-repeat="(key, user) in myRegistries"> {{user.username}} </li>
-                     </ul>  -->
-               </div>
-
-               <div><button ng-click= "addNewRegistry()">Add new</button></div>
         </div>
 
 </div>
